@@ -1,11 +1,13 @@
 # citySelect微信小程序城市定位与选择
 
-一、主要功能：
+一、主要功能
+
 1）默认定位到当前城市
 
 2）用户可以自由切换城市和筛选。
 
 二、准备工作
+
 1）用户需要到腾讯定位服务设置key参数：https://lbs.qq.com/console/mykey.html
 
 2）用户需要再微信公众号平台设置服务器域名，添加request合法域名：https://apis.map.qq.com
