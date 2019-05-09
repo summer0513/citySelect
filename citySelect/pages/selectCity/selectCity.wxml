@@ -1,0 +1,4 @@
+<!--pages/selectCity/selectCity.wxml-->
+<view class='wrapper'>
+  <list-html data="{{city}}" binddetail="getChooseCity" search="{{value}}"></list-html>
+</view>

@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="usermotto" bindtap='selectCity'>
+    <text class="user-motto">{{location}}</text>
+  </view>
+</view>
