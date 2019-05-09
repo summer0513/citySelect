@@ -36,15 +36,63 @@
 
   注意：使用腾讯地图接口需要引入qqmap-wx-jssdk.js，同时实例化
   
-var QQMapWX = require('qqmap-wx-jssdk.js');
+  /***引入腾讯接口文件并实例化**/  
 
-var qqmapsdk;
+  var QQMapWX = require('qqmap-wx-jssdk.js');
 
-qqmapsdk = new QQMapWX({
+  var qqmapsdk;
 
-  key: '腾讯地图Key值'
-  
-});
+  qqmapsdk = new QQMapWX({
+
+    key: '腾讯地图Key值'
+
+  });
+
+
+   /***解析城市定位**/
+   wx.getLocation({
+
+       type: 'wgs84',
+
+       success: function (res) {
+
+         qqmapsdk.reverseGeocoder({
+
+           location: {
+
+             latitude: res.latitude,
+
+             longitude: res.longitude
+
+           },
+           success: function (res) {
+
+             let cityName=res.result.ad_info.city  //城市名称
+
+           },
+
+           fail: function (res) {
+
+             // console.log(res);
+
+           },
+           complete: function (res) {
+
+             // console.log(res);
+
+           }
+
+         });
+
+       },
+    
+    fail: function (res) {
+    
+      console.log('fail' + JSON.stringify(res))
+      
+    }
+    
+  })
 
 
 
