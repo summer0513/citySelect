@@ -47,7 +47,7 @@
 
     })
 
-2)调用wx.getLocation接口来获取当前位置经纬度，传给腾讯地图接口解析处城市。
+2)调用wx.getLocation接口来获取当前位置经纬度，传给腾讯地图接口qqmapsdk.reverseGeocoder解析处城市result.ad_info.city。
 
   注意：使用腾讯地图接口需要引入qqmap-wx-jssdk.js，同时实例化
   
@@ -64,49 +64,16 @@
   });
 
 
-   /***解析城市定位**/
-   
-   wx.getLocation({
+3）需要在组件的ready() 方法中默认调用获取城市定位和加载城市列表的方法。
 
-       type: 'wgs84',
+4）在城市定位页使用组件的时候，一定需要在当前.json文件中配置usingComponents，如下：
 
-       success: function (res) {
+  "usingComponents": {
 
-         qqmapsdk.reverseGeocoder({
+      "list-html": "/component/wx-index-list/wx-index-list"
 
-           location: {
-
-             latitude: res.latitude,
-
-             longitude: res.longitude
-
-           },
-           success: function (res) {
-
-             let cityName=res.result.ad_info.city  //城市名称
-
-           },
-
-           fail: function (res) {
-
-             // console.log(res);
-
-           },
-           complete: function (res) {
-
-             // console.log(res);
-
-           }
-
-         });
-
-       },
-    
-    fail: function (res) {
-    
-      console.log('fail' + JSON.stringify(res))
-      
     }
-    
-  })
 
+
+
+   
